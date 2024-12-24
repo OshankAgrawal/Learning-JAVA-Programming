@@ -5,13 +5,10 @@ public class calculator {
         try (Scanner obj = new Scanner(System.in)) {
             System.out.print("Enter a number: ");
             int num1 = obj.nextInt();
-            
             System.out.print("Enter second number: ");
             int num2 = obj.nextInt();
-
             System.out.print("Enter the sign of operator which you want to perform: ");
             String opr = obj.next();
-
             switch(opr){
                 case "+":{
                     System.out.println("sum of entered number is "+(num1+num2));
