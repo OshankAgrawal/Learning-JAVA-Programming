@@ -1,18 +1,7 @@
-class Node{
-    int data;
-    Node next;
-    Node(){
-        // Default Constructor
-    }
-    Node(int data){
-        this.data=data;
-        this.next=null;
-    }
-}
 class linkedlist{
     Node head=null;
     Node tail=null;
-    void add(int data){
+    void append(int data){
         Node temp=new Node(data);
         if(head==null){
             head=temp;
@@ -58,7 +47,7 @@ class linkedlist{
             insertAtBeginning(data);
             return;
         }else if(index==n){
-            add(data);
+            append(data);
             return;
         }
         Node temp=head;
@@ -121,23 +110,39 @@ class linkedlist{
         Node temp2=head;
         for(int i=0;i<m;i++){
             temp2=temp2.next;
-        }Node tail=head;
-        for(int i=0;i<m-1;i++){
-            tail=tail.next;
         }
-        tail.next=null;
+        Node temp3=head;
+        for(int i=0;i<m-1;i++){
+            temp3=temp3.next;
+        }
+        temp3.next=null;
         temp.next=head;
         head=temp2;
+        tail=temp3;
+    }
+    void removeData(int data){
+        Node temp=head;
+        if(data==head.data){
+            head=head.next;
+            return;
+        }
+        while(!(temp.next.data==data)){
+            temp=temp.next;
+        }
+        temp.next=temp.next.next;
+        if(data==tail.data){
+            tail=temp;
+        }
     }
 }
 public class implementationLL {
     public static void main(String[] args) {
         linkedlist ll=new linkedlist();
-        ll.add(100); // 100
-        ll.add(200); // 100 200
-        ll.add(300); // 100 200 300
-        ll.add(400); // 100 200 300 400
-        ll.add(500); // 100 200 300 400 500
+        ll.append(100); // 100
+        ll.append(200); // 100 200
+        ll.append(300); // 100 200 300
+        ll.append(400); // 100 200 300 400
+        ll.append(500); // 100 200 300 400 500
         ll.display();
         ll.insertAtBeginning(00); // 0 100 200 300 400 500
         ll.display();
@@ -155,8 +160,14 @@ public class implementationLL {
         ll.display();
         ll.deleteAt(5);
         ll.display();
-        System.out.println(ll.tail.data);
+        System.out.println("Size of Linked List is: "+ll.size());
         ll.rotate(2);
+        ll.display();
+        ll.removeData(400);
+        ll.display();
+        System.out.println("Size of Linked List is: "+ll.size());
+        System.out.println("Head "+ll.head.data);
+        System.out.println("Tail "+ll.tail.data);
         ll.display();
     }
 }
