@@ -37,28 +37,55 @@ class ascLinkedList{
         }
         System.out.println();
     }
+    int size(){
+        Node temp=head;
+        int count=0;
+        while(temp!=null){
+            count++;
+            temp=temp.next;
+        }
+        return count;
+    }
+    void removeData(int data){
+        Node temp=head;
+        if(data==head.data){
+            head=head.next;
+            return;
+        }
+        while(!(temp.next.data==data)){
+            temp=temp.next;
+        }
+        temp.next=temp.next.next;
+        if(data==tail.data){
+            tail=temp;
+        }
+    }
 }
 public class implementAscendingLL {
     public static void main(String[] args) {
         ascLinkedList ll=new ascLinkedList();
-        ll.display();
         ll.add(100);
-        ll.display();
         ll.add(200);
-        ll.display();
         ll.add(300);
-        ll.display();
         ll.add(50);
-        ll.display();
         ll.add(40);
-        ll.display();
         ll.add(45);
-        ll.display();
         ll.add(200);
-        ll.display();
         ll.add(150);
-        ll.display();
         ll.add(300);
+        ll.add(10);
+        ll.add(500);
+        ll.add(250);
+        ll.add(-200);
         ll.display();
+        ll.removeData(40);
+        ll.removeData(200);
+        ll.removeData(-200);
+        ll.removeData(300);
+        ll.removeData(500);
+        ll.display();
+        System.out.println("Size of Linked List is: "+ll.size());
+        System.out.println("Head "+ll.head.data);
+        System.out.println("Tail "+ll.tail.data);
     }
 }
