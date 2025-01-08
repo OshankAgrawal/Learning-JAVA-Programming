@@ -25,7 +25,7 @@ public class butterflyPattern {
                 System.out.println();
             }
             // Outer Loop => print thelower part of the pattern
-            for(int i=1;i<=rows;i++){
+            for(int i=2;i<=rows;i++){
                 // Inner Loop => print third triangle
                 for(int j=rows;j>=i;j--){
                     System.out.print("* ");
